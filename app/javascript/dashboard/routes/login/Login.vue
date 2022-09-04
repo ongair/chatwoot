@@ -6,7 +6,7 @@
         :alt="globalConfig.installationName"
         class="hero__logo"
       />
-      <h2 class="hero__title">
+      <h2 class="hero__title hidden">
         {{
           useInstallationName($t('LOGIN.TITLE'), globalConfig.installationName)
         }}
