@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   else
     root to: 'dashboard#index'
 
-    get '/terms', to: 'dashboard#terms'
+    get '/terms', to: 'public#terms'
+    get '/privacy', to: 'public#privacy'
 
     get '/app', to: 'dashboard#index'
     get '/app/*params', to: 'dashboard#index'

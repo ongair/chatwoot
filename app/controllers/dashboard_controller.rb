@@ -9,8 +9,6 @@ class DashboardController < ActionController::Base
 
   def index; end
 
-  def terms; end
-
   private
 
   def set_global_config
