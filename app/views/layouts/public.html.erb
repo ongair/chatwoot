@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= stylesheet_link_tag 'public' %>
+    <title><%= @global_config['INSTALLATION_NAME'] %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="icon" type="image/png" sizes="512x512" href="<%= @global_config['LOGO_THUMBNAIL'] %>">
+  </head>
+  <body>
+    <div id="app" class="app-wrapper app-root" style="margin:2em;">
+      <%= yield %>
+    </div>
+    <noscript id="noscript">This app works best with JavaScript enabled.</noscript>
+  </body>
+</html>

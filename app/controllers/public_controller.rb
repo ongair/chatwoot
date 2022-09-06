@@ -3,4 +3,16 @@
 class PublicController < ActionController::Base
   include RequestExceptionHandler
   skip_before_action :verify_authenticity_token
+  before_action :set_global_config, only: [:terms, :privacy]
+
+  layout 'public'
+
+  def terms; end
+  def privacy; end
+
+  private
+
+  def set_global_config
+    @global_config = GlobalConfig.get('LOGO_THUMBNAIL', 'INSTALLATION_NAME', 'BRAND_NAME', 'WIDGET_BRAND_URL', 'DIRECT_UPLOADS_ENABLED')
+  end
 end
