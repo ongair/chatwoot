@@ -1,7 +1,7 @@
 # if you dont specify locked attribute, the default value will be true
 # which means the particular config will be locked
 - name: INSTALLATION_NAME
-  value: 'Ongair'
+  value: 'Betikare'
 - name: LOGO_THUMBNAIL
   value: '/brand-assets/logo_thumbnail.png'
 - name: LOGO
@@ -11,11 +11,11 @@
 - name: WIDGET_BRAND_URL
   value: 'https://ongair.im'
 - name: BRAND_NAME
-  value: 'Ongair'
+  value: 'Betikare'
 - name: TERMS_URL
-  value: 'https://www.chatwoot.com/terms-of-service'
+  value: 'https://social.emalify.com/terms'
 - name: PRIVACY_URL
-  value: 'https://www.chatwoot.com/privacy-policy'
+  value: 'https://social.emalify.com/privacy'
 - name: DISPLAY_MANIFEST
   value: true
 - name: MAILER_INBOUND_EMAIL_DOMAIN
