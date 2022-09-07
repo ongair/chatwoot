@@ -46,19 +46,19 @@ export default {
     channelList() {
       const { apiChannelName, apiChannelThumbnail } = this.globalConfig;
       return [
-        { key: 'website', name: 'Website' },
+        // { key: 'website', name: 'Website' },
         { key: 'facebook', name: 'Messenger' },
         { key: 'twitter', name: 'Twitter' },
         { key: 'whatsapp', name: 'WhatsApp' },
-        { key: 'sms', name: 'SMS' },
-        { key: 'email', name: 'Email' },
+        // { key: 'sms', name: 'SMS' },
+        // { key: 'email', name: 'Email' },
         {
           key: 'api',
           name: apiChannelName || 'API',
           thumbnail: apiChannelThumbnail,
         },
         { key: 'telegram', name: 'Telegram' },
-        { key: 'line', name: 'Line' },
+        // { key: 'line', name: 'Line' },
       ];
     },
     ...mapGetters({
