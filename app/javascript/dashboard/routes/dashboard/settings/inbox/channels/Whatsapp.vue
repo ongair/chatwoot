@@ -11,12 +11,12 @@
           <option value="whatsapp_cloud">
             {{ $t('INBOX_MGMT.ADD.WHATSAPP.PROVIDERS.WHATSAPP_CLOUD') }}
           </option>
-          <option value="twilio">
+          <!-- <option value="twilio">
             {{ $t('INBOX_MGMT.ADD.WHATSAPP.PROVIDERS.TWILIO') }}
           </option>
           <option value="360dialog">
             {{ $t('INBOX_MGMT.ADD.WHATSAPP.PROVIDERS.360_DIALOG') }}
-          </option>
+          </option> -->
         </select>
       </label>
     </div>
