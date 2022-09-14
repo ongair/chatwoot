@@ -7,6 +7,8 @@ class Whatsapp::IncomingMessageBaseService
   def perform
     processed_params
 
+    Rails.logger.info(">> Params #{@processed_params}")
+
     set_contact
     return unless @contact
 
