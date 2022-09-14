@@ -25,6 +25,8 @@ class Whatsapp::IncomingMessageBaseService
       source_id: @processed_params[:messages].first[:id].to_s
     )
     attach_files
+
+    Rails.logger.info("Message saved #{@message} - #{@message.valid?}")
     @message.save!
   end
 
@@ -47,6 +49,7 @@ class Whatsapp::IncomingMessageBaseService
   end
 
   def set_contact
+    Rails.logger.info('>>> setting contact')
     contact_params = @processed_params[:contacts]&.first
     return if contact_params.blank?
 
@@ -57,6 +60,7 @@ class Whatsapp::IncomingMessageBaseService
     ).perform
 
     @contact_inbox = contact_inbox
+    Rails.logger.info(">>> Contact  #{contact_inbox.contact}")
     @contact = contact_inbox.contact
   end
 
@@ -70,6 +74,7 @@ class Whatsapp::IncomingMessageBaseService
   end
 
   def set_conversation
+    Rails.logger.info('>>> setting conversation')
     @conversation = @contact_inbox.conversations.last
     return if @conversation
 
