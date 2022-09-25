@@ -28,7 +28,9 @@ class Whatsapp::Providers::WhatsappCloudService < Whatsapp::Providers::BaseServi
   end
 
   def validate_provider_config?
+    Rails.logger.info ">> Validating provider config #{whatsapp_channel.provider_config}"
     response = HTTParty.get("#{business_account_path}/message_templates?access_token=#{whatsapp_channel.provider_config['api_key']}")
+    puts ">>> #{response.body}"
     response.success?
   end
 
