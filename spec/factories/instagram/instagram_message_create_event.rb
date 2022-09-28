@@ -147,4 +147,43 @@ FactoryBot.define do
     end
     initialize_with { attributes }
   end
+
+  factory :instagram_post_comment, class: Hash do
+    object { 'instagram' }
+    instagram do
+      object { 'instagram' }
+      entry do
+        [
+          {
+            'id': 'instagram-comment-id-1234'
+          }
+        ]
+      end
+    end
+    entry do
+      [
+        {
+          'id': 'instagram-comment-id-1234',
+          'time': '2021-09-08T06:34:04+0000',
+          'changes': [{
+            'field': 'comments',
+            'value': {
+              'from': {
+                'id': 'commenter-id-1',
+                'username': 'test'
+              },
+              'media': {
+                'id': 'media-id-1',
+                'media_product_type': 'FEED'
+              },
+              'id': 'comment-id-1234',
+              'parent_id': 'post-id-1234',
+              'text': 'This is a comment'
+            }
+          }]
+        }
+      ]
+    end
+    initialize_with { attributes }
+  end
 end

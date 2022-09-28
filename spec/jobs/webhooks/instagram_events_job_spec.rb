@@ -24,6 +24,7 @@ describe Webhooks::InstagramEventsJob do
   let!(:unsend_event) { build(:instagram_message_unsend_event).with_indifferent_access }
   let!(:attachment_params) { build(:instagram_message_attachment_event).with_indifferent_access }
   let!(:story_mention_params) { build(:instagram_story_mention_event).with_indifferent_access }
+  let!(:comment_params) { build(:instagram_post_comment).with_indifferent_access }
   let(:fb_object) { double }
 
   describe '#perform' do
@@ -112,6 +113,11 @@ describe Webhooks::InstagramEventsJob do
 
         expect(instagram_inbox.messages.count).to be 1
         expect(instagram_inbox.messages.last.attachments.count).to be 1
+      end
+
+      it 'handles creation of a post comment' do
+        allow(Koala::Facebook::API).to receive(:new).and_return(fb_object)
+        instagram_webhook.perform_now(comment_params[:entry])
       end
     end
   end
