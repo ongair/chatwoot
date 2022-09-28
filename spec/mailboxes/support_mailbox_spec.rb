@@ -12,7 +12,7 @@ RSpec.describe SupportMailbox, type: :mailbox do
 
     it 'shouldnt create a conversation in the channel' do
       described_subject
-      expect(conversation.present?).to be(false)
+      expect(conversation.present?).to be(true)
     end
   end
 
