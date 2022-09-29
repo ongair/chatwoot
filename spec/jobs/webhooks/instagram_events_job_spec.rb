@@ -25,6 +25,13 @@ describe Webhooks::InstagramEventsJob do
   let!(:attachment_params) { build(:instagram_message_attachment_event).with_indifferent_access }
   let!(:story_mention_params) { build(:instagram_story_mention_event).with_indifferent_access }
   let!(:comment_params) { build(:instagram_post_comment).with_indifferent_access }
+  let(:instagram_post) do
+    {
+      media_type: 'IMAGE',
+      media_url: 'https://scontent.cdninstagram/v/1.jpg',
+      id: 'media-id-1'
+    }
+  end
   let(:fb_object) { double }
 
   describe '#perform' do
@@ -117,6 +124,7 @@ describe Webhooks::InstagramEventsJob do
 
       it 'handles creation of a post comment' do
         allow(Koala::Facebook::API).to receive(:new).and_return(fb_object)
+        # allow(fb_object).to receive(:get_object).and_return
         instagram_webhook.perform_now(comment_params[:entry])
       end
     end
