@@ -15,7 +15,7 @@
       :variant="variant"
     />
     <img
-      v-if="badge === 'instagram_direct_message'||badge === 'instagram_comment_message'"
+      v-if="badge === 'instagram_direct_message' || badge === 'instagram_comment_message'"
       id="badge"
       class="source-badge"
       :style="badgeStyle"
