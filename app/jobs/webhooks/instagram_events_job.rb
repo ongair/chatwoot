@@ -20,7 +20,7 @@ class Webhooks::InstagramEventsJob < ApplicationJob
 
       entry[:changes] && entry[:changes].each do |change|
         Rails.logger.info ">> Change #{change}"
-        comment(change)
+        comment(entry[:id], change)
       end
     end
   end
@@ -35,7 +35,7 @@ class Webhooks::InstagramEventsJob < ApplicationJob
     ::Instagram::MessageText.new(messaging).perform
   end
 
-  def comment(comment)
-    ::Instagram::CommentText.new(comment).perform
+  def comment(instagram_id, comment)
+    ::Instagram::CommentText.new(instagram_id, comment).perform
   end
 end

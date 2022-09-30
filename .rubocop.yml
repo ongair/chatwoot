@@ -30,6 +30,8 @@ Style/SymbolArray:
   Enabled: false
 Style/OpenStructUse:
   Enabled: false
+Style/SafeNavigation:
+  Enabled: false
 Style/OptionalBooleanParameter:
   Exclude:
     - 'app/services/email_templates/db_resolver_service.rb'

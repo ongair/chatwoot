@@ -163,13 +163,13 @@ FactoryBot.define do
     entry do
       [
         {
-          'id': 'instagram-comment-id-1234',
+          'id': 'chatwoot-app-user-id-1',
           'time': '2021-09-08T06:34:04+0000',
           'changes': [{
             'field': 'comments',
             'value': {
               'from': {
-                'id': 'commenter-id-1',
+                'id': 'Sender-id-1',
                 'username': 'test'
               },
               'media': {
