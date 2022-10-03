@@ -32,6 +32,15 @@
           <span v-if="shouldShowSpinner" class="spinner message" />
         </li>
       </transition>
+      <div class="instagram-post" v-if="isAnInstagramComment">
+        <ul class="post-list">
+          <li>
+            <div class="wrap">
+              <img v-bind:src="mediaUrl" />
+            </div>
+          </li>
+        </ul>
+      </div>
       <message
         v-for="message in getReadMessages"
         :key="message.id"
@@ -209,12 +218,28 @@ export default {
       return type || '';
     },
 
+    mediaType() {
+      const { additional_attributes: additionalAttributes } = this.currentChat;
+      const mediaType = additionalAttributes ? additionalAttributes.media_type : '';
+      return mediaType || '';
+    },
+
+    mediaUrl() {
+      const { additional_attributes: additionalAttributes } = this.currentChat;
+      const mediaUrl = additionalAttributes ? additionalAttributes.media_url : '';
+      return mediaUrl || '';
+    },
+
     isATweet() {
       return this.conversationType === 'tweet';
     },
 
     hasInstagramStory() {
       return this.conversationType === 'instagram_direct_message';
+    },
+
+    isAnInstagramComment() {
+      return this.conversationType === 'instagram_comment_message';
     },
 
     selectedTweet() {
@@ -462,6 +487,23 @@ export default {
     border: 1px solid var(--color-border-light);
     border-right: 0;
     box-sizing: border-box;
+  }
+}
+
+.instagram-post {
+  margin: 1.6rem;
+  background-color: #fff;
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+
+  ul.post-list {
+    margin-left: 0;
+
+    li {
+      list-style-type: none;
+    }
   }
 }
 </style>
