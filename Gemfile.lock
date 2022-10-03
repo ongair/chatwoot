@@ -8,10 +8,10 @@ GIT
 
 GIT
   remote: https://github.com/ongair/facebook-messenger
-  revision: cf22d2bc8b6e7b95dd2d5d54cc522a558f4d768a
+  revision: f939ea5ee888f1f562a977264e04a288414e1421
   branch: feature/feed
   specs:
-    facebook-messenger (2.0.2)
+    facebook-messenger (2.0.3)
       httparty (~> 0.13, >= 0.13.7)
       rack (>= 1.4.5)
 
