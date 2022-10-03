@@ -15,6 +15,7 @@ class ChatwootFbProvider < Facebook::Messenger::Configuration::Providers::Base
   private
 
   def bot
+    Rails.logger.info ">> Bot initiated"
     Chatwoot::Bot
   end
 end
