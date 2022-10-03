@@ -76,7 +76,8 @@ gem 'wisper', '2.0.0'
 
 ##--- gems for channels ---##
 # TODO: bump up gem to 2.0
-gem 'facebook-messenger'
+# gem 'facebook-messenger'
+gem 'facebook-messenger', git: 'https://github.com/ongair/facebook-messenger', branch: 'feature/feed'
 gem 'line-bot-api'
 gem 'twilio-ruby', '~> 5.66'
 # twitty will handle subscription of twitter account events
