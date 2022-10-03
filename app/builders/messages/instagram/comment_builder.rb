@@ -41,6 +41,10 @@ class Messages::Instagram::CommentBuilder < Messages::Messenger::MessageBuilder
     @comment[:value][:from][:id]
   end
 
+  def post_id
+    @comment[:value][:media][:id]
+  end
+
   def message_type
     :incoming
   end
@@ -57,12 +61,18 @@ class Messages::Instagram::CommentBuilder < Messages::Messenger::MessageBuilder
   end
 
   def conversation_params
+    koala = Koala::Facebook::API.new(@inbox.channel.page_access_token)
+    result = koala.get_object(post_id, { fields: "id,media_type,media_url"})
+
     {
       account_id: @inbox.account_id,
       inbox_id: @inbox.id,
       contact_id: contact.id,
       additional_attributes: {
-        type: 'instagram_comment_message'
+        type: 'instagram_comment_message',
+        post_id: post_id,
+        media_type: result['media_type'],
+        media_url: result['media_url']
       }
     }
   end

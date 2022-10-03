@@ -173,7 +173,7 @@ FactoryBot.define do
                 'username': 'test'
               },
               'media': {
-                'id': 'media-id-1',
+                'id': 'post-id-1',
                 'media_product_type': 'FEED'
               },
               'id': 'comment-id-1234',
