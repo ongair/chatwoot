@@ -46,5 +46,6 @@ Rails.application.reloader.to_prepare do
 
   Facebook::Messenger::Bot.on :value do |feed|
     Rails.logger.info "Feed changed #{feed}"
+    Webhooks::FacebookPostsJob.perform_later(feed.to_json)
   end
 end
