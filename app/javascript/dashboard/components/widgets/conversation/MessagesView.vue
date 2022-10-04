@@ -32,11 +32,12 @@
           <span v-if="shouldShowSpinner" class="spinner message" />
         </li>
       </transition>
-      <div class="instagram-post" v-if="isAnInstagramComment">
+      <div class="instagram-post" v-if="isAnInstagramComment || isAFacebookComment">
         <ul class="post-list">
           <li>
             <div class="wrap">
-              <img v-bind:src="mediaUrl" />
+              <img v-bind:src="mediaUrl" v-if="hasMediaAttribute" />
+              <p class="caption">{{ postMessage }}</p>
             </div>
           </li>
         </ul>
@@ -230,6 +231,16 @@ export default {
       return mediaUrl || '';
     },
 
+    postMessage() {
+      const { additional_attributes: additionalAttributes } = this.currentChat;
+      const message = additionalAttributes ? additionalAttributes.message : '';
+      return message || '';
+    },
+
+    hasMediaAttribute() {
+      return this.mediaUrl !== '';
+    },
+
     isATweet() {
       return this.conversationType === 'tweet';
     },
@@ -240,6 +251,10 @@ export default {
 
     isAnInstagramComment() {
       return this.conversationType === 'instagram_comment_message';
+    },
+
+    isAFacebookComment() {
+      return this.conversationType === 'facebook_comment_message';
     },
 
     selectedTweet() {
