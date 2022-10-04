@@ -22,7 +22,7 @@
       src="/integrations/channels/badges/instagram-dm.png"
     />
     <img
-      v-else-if="badge === 'facebook'"
+      v-else-if="badge === 'facebook' || badge === 'facebook_comment_message'"
       id="badge"
       class="source-badge"
       :style="badgeStyle"
