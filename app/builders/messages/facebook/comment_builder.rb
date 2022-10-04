@@ -66,7 +66,7 @@ class Messages::Facebook::CommentBuilder < Messages::Messenger::MessageBuilder
 
     def conversation_params
         koala = Koala::Facebook::API.new(@inbox.channel.page_access_token)
-        # result = koala.get_object(post_id, { fields: "id,media_type,media_url"})
+        result = koala.get_object(@comment.post_id, { fields: "id,message,full_picture"})
 
         {
           account_id: @inbox.account_id,
@@ -75,8 +75,8 @@ class Messages::Facebook::CommentBuilder < Messages::Messenger::MessageBuilder
           additional_attributes: {
             type: 'facebook_comment_message',
             post_id: @comment.post_id,
-            # media_type: result['media_type'],
-            # media_url: result['media_url']
+            message: result['message'],
+            media_url: result['full_picture']        
           }
         }
     end
