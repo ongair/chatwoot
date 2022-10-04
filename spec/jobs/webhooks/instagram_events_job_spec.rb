@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'webhooks/twitter'
 
 describe Webhooks::InstagramEventsJob do
   subject(:instagram_webhook) { described_class }

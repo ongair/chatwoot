@@ -12,14 +12,12 @@ class Webhooks::InstagramEventsJob < ApplicationJob
   def perform(entries)
     @entries = entries
 
-    Rails.logger.info ">> Entries #{entries}"
     @entries.each do |entry|
       entry[:messaging] && entry[:messaging].each do |messaging|
         send(@event_name, messaging) if event_name(messaging)
       end
 
       entry[:changes] && entry[:changes].each do |change|
-        Rails.logger.info ">> Change #{change}"
         comment(entry[:id], change)
       end
     end
