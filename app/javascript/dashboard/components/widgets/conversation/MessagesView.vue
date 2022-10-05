@@ -520,5 +520,9 @@ export default {
       list-style-type: none;
     }
   }
+
+  p.caption {
+    margin-bottom: 0;
+  }
 }
 </style>
