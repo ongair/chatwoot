@@ -28,6 +28,8 @@ class SendReplyJob < ApplicationJob
   def send_on_facebook_page(message)
     if message.conversation.additional_attributes['type'] == 'instagram_direct_message'
       ::Instagram::SendOnInstagramService.new(message: message).perform
+    elsif message.conversation.additional_attributes['type'] == 'instagram_comment_message'
+      ::Instagram::SendReplyOnInstagramService.new(message: message).perform
     else
       ::Facebook::SendOnFacebookService.new(message: message).perform
     end

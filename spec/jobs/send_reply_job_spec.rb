@@ -29,6 +29,28 @@ RSpec.describe SendReplyJob, type: :job do
       described_class.perform_now(message.id)
     end
 
+    it 'calls Facebook::SendOnInstagramService when its an instagram direct message' do
+      stub_request(:post, /graph.facebook.com/)
+      facebook_channel = create(:channel_facebook_page)
+      facebook_inbox = create(:inbox, channel: facebook_channel)
+      message = create(:message, conversation: create(:conversation, inbox: facebook_inbox, additional_attributes: { 'type' => 'instagram_direct_message' }))
+      allow(Instagram::SendOnInstagramService).to receive(:new).with(message: message).and_return(process_service)
+      expect(Instagram::SendOnInstagramService).to receive(:new).with(message: message)
+      expect(process_service).to receive(:perform)
+      described_class.perform_now(message.id)
+    end
+
+    it 'calls Facebook::SendOnInstagramService when its an instagram direct message' do
+      stub_request(:post, /graph.facebook.com/)
+      facebook_channel = create(:channel_facebook_page)
+      facebook_inbox = create(:inbox, channel: facebook_channel)
+      message = create(:message, conversation: create(:conversation, inbox: facebook_inbox, additional_attributes: { 'type' => 'instagram_comment_message' }))
+      allow(Instagram::SendReplyOnInstagramService).to receive(:new).with(message: message).and_return(process_service)
+      expect(Instagram::SendReplyOnInstagramService).to receive(:new).with(message: message)
+      expect(process_service).to receive(:perform)
+      described_class.perform_now(message.id)
+    end
+
     it 'calls ::Twitter::SendOnTwitterService when its twitter message' do
       twitter_channel = create(:channel_twitter_profile)
       twitter_inbox = create(:inbox, channel: twitter_channel)
