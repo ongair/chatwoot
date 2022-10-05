@@ -15,7 +15,7 @@ class Instagram::SendReplyOnInstagramService < Base::SendOnChannelService
         query = { access_token: access_token }
 
         response = HTTParty.post(
-            "https://graph.facebook.com/v11.0/#{last_incoming_message.source_id}?replies",
+            "https://graph.facebook.com/v11.0/#{conversation.additional_attributes['post_id']}/comments/#{last_incoming_message.source_id}?replies",
             body: message_params,
             :debug_output => $stdout,
             query: query

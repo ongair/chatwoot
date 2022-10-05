@@ -13,7 +13,7 @@ describe Instagram::SendReplyOnInstagramService do
     let!(:instagram_inbox) { create(:inbox, channel: instagram_channel, account: account, greeting_enabled: false) }
     let!(:contact) { create(:contact, account: account) }
     let(:contact_inbox) { create(:contact_inbox, contact: contact, inbox: instagram_inbox) }
-    let(:conversation) { create(:conversation, contact: contact, inbox: instagram_inbox, contact_inbox: contact_inbox, additional_attributes: { 'type' => 'instagram_comment_message' }) }
+    let(:conversation) { create(:conversation, contact: contact, inbox: instagram_inbox, contact_inbox: contact_inbox, additional_attributes: { 'type' => 'instagram_comment_message', 'post_id' => 'instagram_post_id' }) }
     let!(:incoming_message) { create(:message, conversation: conversation, message_type: 'incoming', inbox: instagram_inbox, account: account, source_id: 'instagram_comment_id' )}
     let(:response) { double }
 
@@ -25,7 +25,7 @@ describe Instagram::SendReplyOnInstagramService do
 
             it 'can send a message reply' do
                 message = create(:message, message_type: 'outgoing', content: 'reply', inbox: instagram_inbox, account: account, conversation: conversation)
-                allow(HTTParty).to receive(:post).with('https://graph.facebook.com/v11.0/instagram_comment_id?replies', {
+                allow(HTTParty).to receive(:post).with('https://graph.facebook.com/v11.0/instagram_post_id/comments/instagram_comment_id?replies', {
                     body: {
                         message: 'reply',
                         hide: false
