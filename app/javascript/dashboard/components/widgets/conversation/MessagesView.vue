@@ -36,7 +36,8 @@
         <ul class="post-list">
           <li>
             <div class="wrap">
-              <img v-bind:src="mediaUrl" v-if="hasMediaAttribute" />
+              <img v-bind:src="mediaUrl" v-if="hasMediaAttribute && hasImage" />
+              <video v-bind:src="mediaUrl" v-if="hasMediaAttribute && hasVideo"></video>
               <p class="caption">{{ postMessage }}</p>
             </div>
           </li>
@@ -239,6 +240,14 @@ export default {
 
     hasMediaAttribute() {
       return this.mediaUrl !== '';
+    },
+
+    hasImage() {
+      return this.mediaType == 'IMAGE'
+    },
+
+    hasVideo() {
+      return this.mediaType == 'VIDEO'
     },
 
     isATweet() {
