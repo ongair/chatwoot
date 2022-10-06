@@ -34,6 +34,7 @@ class Webhooks::InstagramEventsJob < ApplicationJob
   end
 
   def comment(instagram_id, comment)
+    Rails.logger.info("Adding comment", comment)
     ::Instagram::CommentText.new(instagram_id, comment).perform
   end
 end
