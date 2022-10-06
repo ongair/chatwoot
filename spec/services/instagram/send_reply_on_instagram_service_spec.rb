@@ -36,7 +36,7 @@ describe Instagram::SendReplyOnInstagramService do
                     }
                 }).and_return(
                     {
-                        'success': true
+                        'id': 'instagram_reply_id'
                     }
                 )
 

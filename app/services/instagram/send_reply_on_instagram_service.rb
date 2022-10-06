@@ -20,6 +20,7 @@ class Instagram::SendReplyOnInstagramService < Base::SendOnChannelService
             :debug_output => $stdout,
             query: query
         )
+        message.update!(source_id: response['id']) if response['id'].present?
     end
 
     def last_incoming_message
