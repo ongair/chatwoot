@@ -18,9 +18,12 @@ class Instagram::CommentText < Instagram::WebhooksBaseService
     return if @inbox.blank?
 
     contact_id = comment[:value][:from][:id]
-    ensure_contact(contact_id) if contacts_first_message?(contact_id)
+    is_post_back = contact_id === @instagram_id
+    if !is_post_back
+      ensure_contact(contact_id) if contacts_first_message?(contact_id)
 
-    create_message
+      create_message
+    end
   end
 
   def create_message
