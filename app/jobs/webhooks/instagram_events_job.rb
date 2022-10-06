@@ -18,6 +18,7 @@ class Webhooks::InstagramEventsJob < ApplicationJob
       end
 
       entry[:changes] && entry[:changes].each do |change|
+        Rails.logger.info("Entries", entry[:id], change)
         comment(entry[:id], change)
       end
     end
