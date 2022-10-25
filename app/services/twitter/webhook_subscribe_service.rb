@@ -48,6 +48,7 @@ class Twitter::WebhookSubscribeService
 
   def subscription?
     response = twitter_client.fetch_subscriptions
+    Rails.logger.info "Subscription found #{response.body}"
     response.status == '204'
   end
 
