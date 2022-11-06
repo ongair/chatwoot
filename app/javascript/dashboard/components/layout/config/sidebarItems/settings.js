@@ -87,13 +87,13 @@ const settings = accountId => ({
       ),
       toStateName: 'canned_list',
     },
-    // {
-    //   icon: 'flash-on',
-    //   label: 'INTEGRATIONS',
-    //   hasSubMenu: false,
-    //   toState: frontendURL(`accounts/${accountId}/settings/integrations`),
-    //   toStateName: 'settings_integrations',
-    // },
+    {
+      icon: 'flash-on',
+      label: 'INTEGRATIONS',
+      hasSubMenu: false,
+      toState: frontendURL(`accounts/${accountId}/settings/integrations`),
+      toStateName: 'settings_integrations',
+    },
     // {
     //   icon: 'star-emphasis',
     //   label: 'APPLICATIONS',
