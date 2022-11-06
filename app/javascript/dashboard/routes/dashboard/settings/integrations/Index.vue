@@ -17,7 +17,7 @@
               :integration-action="item.action"
             />
           </div>
-          <div class="small-12 columns integration">
+          <!-- <div class="small-12 columns integration">
             <integration
               integration-id="dashboard-apps"
               integration-logo="dashboard-apps.svg"
@@ -30,7 +30,7 @@
               integration-enabled
               integration-action="/dashboard-apps"
             />
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
