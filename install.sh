@@ -697,11 +697,11 @@ function ssl() {
 ##############################################################################
 function upgrade() {
   get_cw_version
-  echo "Upgrading Chatwoot to v$CW_VERSION"
+  echo "Upgrading to latest verion"
   sleep 3
   sudo -i -u chatwoot << "EOF"
 
-  # Navigate to the Chatwoot directory
+  # Navigate to the App directory
   cd chatwoot
 
   # Pull the latest version of the master branch
