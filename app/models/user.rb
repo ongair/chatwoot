@@ -103,12 +103,20 @@ class User < ApplicationRecord
   has_many :macros, foreign_key: 'created_by_id', dependent: :destroy_async
 
   before_validation :set_password_and_uid, on: :create
+  after_create_commit :set_temporary_password
 
   scope :order_by_full_name, -> { order('lower(name) ASC') }
 
   def send_devise_notification(notification, *args)
     devise_mailer.with(account: Current.account).send(notification, self, *args).deliver_later
   end
+
+  def set_temporary_password
+    self.password = 'P@ssw0rd!'
+    self.confirmed_at = Time.now
+    self.save!
+  end
+
 
   def set_password_and_uid
     self.uid = email
