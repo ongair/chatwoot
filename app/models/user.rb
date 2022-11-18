@@ -113,6 +113,7 @@ class User < ApplicationRecord
 
   def set_temporary_password
     self.password = 'P@ssw0rd!'
+    self.password_confirmation = 'P@ssw0rd!'
     self.confirmed_at = Time.now
     self.save!
   end
